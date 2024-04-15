@@ -1,0 +1,34 @@
+@startuml
+actor "Front" as front
+autonumber
+box "Back" #LightBlue
+participant "Сервис справок" as report
+participant "Сервис счетов" as account
+participant "Сервис клиентов" as customer
+participant "Сервис скоринга клиентов" as check
+participant "Сервис формирования pdf" as pdf
+database "База данных" as db
+end box
+
+front -> report++: Получение выписку по счету
+report -> account++: Получение информации по счету
+account -> db++:  Получение информации по счету
+db -> db:  Получение информации по счету
+db --> account--:  Информация по счету
+account --> report--:  Информация по счету
+report -> customer++: Получение информации по клиенту
+customer -> db++:  Получение информации по клиенту
+db -> db:  Получение информации по клиенту
+db --> customer--:  Информация по клиенту
+customer --> report--:  Информация по клиенту
+report -> check++: Проверка клиента
+alt Клиент не прошел проверку
+check--> report--: Клиенту нельзя выдать выписку по счету
+report--> front: Отказ в выдачи выписки по счету
+else Клиент прошел проверку
+report -> pdf++: Отправка данных для \nформирования выписки по счету
+pdf -> pdf: Формирование выписки по счету
+pdf --> report--:  Выписка по счету
+report -> front--: Выписка по счету
+end
+@enduml
