@@ -6,3 +6,6 @@ ALt+D
 
 https://plantuml.com/ru/guide
 
+# Show
+
+![](./md.drawio.svg)
