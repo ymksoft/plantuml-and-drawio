@@ -1,0 +1,16 @@
+@startuml
+
+skinparam BoxPadding 5
+actor "Front" as front
+
+box "Back" #AliceBlue
+    participant "Micro-api" as dpa
+end box
+
+front -> dpa: GET /pages/{pageID}
+activate dpa
+dpa -> dpa: Получение данных из BD
+dpa --> front: Данные экрана
+deactivate dpa
+
+@enduml
