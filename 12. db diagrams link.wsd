@@ -1,0 +1,17 @@
+
+@startuml
+left to right direction
+object Responses {
+Id
+UserID
+Question
+}
+
+
+object Question {
+Id
+Description
+}
+Question ||--|{ Responses
+
+@enduml

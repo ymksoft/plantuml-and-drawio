@@ -1,0 +1,17 @@
+@startuml
+scale 2
+start
+:Добавить игру в корзину;
+:Оформить заказ;
+:Проверить cookie;
+while (Доступны cookie?) is (доступны)
+:Показать форму login;
+endwhile
+fork
+:Счет на оплату;
+fork again
+:Загрузка игры;
+end fork
+:Установка и игра;
+stop
+@enduml

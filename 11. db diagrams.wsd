@@ -1,0 +1,14 @@
+@startuml
+
+object Responses {
+Id
+UserID
+Question
+}
+
+
+object Question {
+Id
+Description
+}
+@enduml
